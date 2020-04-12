@@ -2,13 +2,14 @@ package models
 
 import (
 	"errors"
-	"github.com/badoux/checkmail"
-	"github.com/google/uuid"
-	"github.com/jinzhu/gorm"
-	"golang.org/x/crypto/bcrypt"
 	"html"
 	"strings"
 	"time"
+
+	"github.com/badoux/checkmail"
+	"github.com/codeinbit/go-shop/api/utility"
+	"github.com/google/uuid"
+	"github.com/jinzhu/gorm"
 )
 
 type Admin struct {
@@ -20,16 +21,8 @@ type Admin struct {
 	Password  string `gorm:"size:100;not null;" json:"password"`
 }
 
-func Hash(password string) ([]byte, error) {
-	return bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
-}
-
-func VerifyPassword(hashedPassword, password string) error {
-	return bcrypt.CompareHashAndPassword([]byte(hashedPassword), []byte(password))
-}
-
 func (a *Admin) BeforeSave() error {
-	hashedPassword, err := Hash(a.Password)
+	hashedPassword, err := utility.Hash(a.Password)
 	if err != nil {
 		return err
 	}
