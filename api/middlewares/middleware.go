@@ -19,7 +19,7 @@ func SetMiddlewareAuthentication(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		err := myAuth.TokenValid(r)
 		if err != nil {
-			responses.ERROR(w, http.StatusUnauthorized, errors.New("Unauthorized"))
+			responses.ERROR(w, http.StatusUnauthorized, errors.New("unauthorized"))
 			return
 		}
 		next(w, r)

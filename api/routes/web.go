@@ -9,5 +9,5 @@ import (
 func LoadRouter() {
 	route := mux.NewRouter()
 	//Home Route
-	route.HandleFunc("/", middlewares.SetMiddlewareJSON(controllers.Home)).Methods("GET")
+	route.HandleFunc("/", middlewares.SetMiddlewareJSON(controllers.)).Methods("GET")
 }
