@@ -3,6 +3,7 @@ package controllers
 
 import (
 	"fmt"
+	"github.com/codeinbit/go-shop/api/controllers"
 	"github.com/gorilla/mux"
 	"github.com/jinzhu/gorm"
 	"log"
@@ -16,6 +17,8 @@ type Server struct {
 	DB *gorm.DB
 	Router *mux.Router
 }
+
+//var router = routes.Route{}
 
 func (s Server) Initialize(Dbdriver, DbUser, DbPassword, DbPort, DbHost, DbName string)  {
 	var err error
@@ -44,10 +47,11 @@ func (s Server) Initialize(Dbdriver, DbUser, DbPassword, DbPort, DbHost, DbName 
 	//database migration
 	s.DB.Debug().AutoMigrate(&models.Admin{}, &models.Category{}, &models.SubCategory{}, &models.Product{})
 
-	routes.LoadRouter()
+	//router.LoadRouter()
+	s.Router = routes.
 }
 
 func (s Server) Run(addr string) {
 	fmt.Println("Listening to port 8080")
-	log.Fatal(http.ListenAndServe(addr, s.Router))
+	log.Fatal(http.ListenAndServe(addr, routes.LoadRouter))
 }
