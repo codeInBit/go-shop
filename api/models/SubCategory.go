@@ -44,7 +44,7 @@ func (sc *SubCategory) Validate() error {
 	return nil
 }
 
-func (sc *SubCategory) Save(db gorm.DB) (*SubCategory, error) {
+func (sc *SubCategory) Save(db *gorm.DB) (*SubCategory, error) {
 	var err error
 	err = db.Debug().Model(&SubCategory{}).Create(&sc).Error
 	if err != nil {
@@ -61,7 +61,7 @@ func (sc *SubCategory) Save(db gorm.DB) (*SubCategory, error) {
 	return sc, nil
 }
 
-func (sc *SubCategory) GetAll(db gorm.DB) (*[]SubCategory, error) {
+func (sc *SubCategory) GetAll(db *gorm.DB) (*[]SubCategory, error) {
 	var err error
 	subCategories := []SubCategory{}
 	err = db.Debug().Model(&SubCategory{}).Limit(100).Find(&subCategories).Error
@@ -81,7 +81,7 @@ func (sc *SubCategory) GetAll(db gorm.DB) (*[]SubCategory, error) {
 	return &subCategories, nil
 }
 
-func (sc *SubCategory) Update(db gorm.DB, slug string) (*SubCategory, error) {
+func (sc *SubCategory) Update(db *gorm.DB, slug string) (*SubCategory, error) {
 	var err error
 	err = db.Debug().Model(&SubCategory{}).Where("slug = ?", slug).Take(&SubCategory{}).Updates(
 		map[string]interface{}{
@@ -102,7 +102,7 @@ func (sc *SubCategory) Update(db gorm.DB, slug string) (*SubCategory, error) {
 	return sc, nil
 }
 
-func (sc *SubCategory) Delete(db gorm.DB, catId uint64, slug string) (int64, error) {
+func (sc *SubCategory) Delete(db *gorm.DB, catId uint64, slug string) (int64, error) {
 	var err error
 	err = db.Debug().Model(&SubCategory{}).Where("slug = ? and category_id = ?", slug, catId).Take(&SubCategory{}).Delete(&SubCategory{}).Error
 	if err != nil {

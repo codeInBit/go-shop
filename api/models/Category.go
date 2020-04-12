@@ -37,7 +37,7 @@ func (c *Category) Validate() error {
 	return nil
 }
 
-func (c *Category) Save(db gorm.DB) (*Category, error) {
+func (c *Category) Save(db *gorm.DB) (*Category, error) {
 	var err error
 	err = db.Debug().Model(&Category{}).Create(&c).Error
 	if err != nil {
@@ -47,7 +47,7 @@ func (c *Category) Save(db gorm.DB) (*Category, error) {
 	return c, nil
 }
 
-func (c *Category) GetAll(db gorm.DB) (*[]Category, error) {
+func (c *Category) GetAll(db *gorm.DB) (*[]Category, error) {
 	var err error
 	categories := []Category{}
 	err = db.Debug().Model(&Category{}).Limit(100).Find(&categories).Error
@@ -58,7 +58,7 @@ func (c *Category) GetAll(db gorm.DB) (*[]Category, error) {
 	return &categories, err
 }
 
-func (c *Category) Update(db gorm.DB, slug string) (*Category, error) {
+func (c *Category) Update(db *gorm.DB, slug string) (*Category, error) {
 	var err error
 	err = db.Debug().Model(&Category{}).Where("slug = ?", slug).Take(&Category{}).Updates(
 		map[string]interface{}{
@@ -76,7 +76,7 @@ func (c *Category) Update(db gorm.DB, slug string) (*Category, error) {
 	return c, nil
 }
 
-func (c Category) Delete(db gorm.DB, slug string) (int64, error) {
+func (c Category) Delete(db *gorm.DB, slug string) (int64, error) {
 	var err error
 	err = db.Debug().Model(&Admin{}).Where("slug = ?", slug).Take(&Admin{}).Delete(&Admin{}).Error
 	if err != nil {

@@ -93,7 +93,7 @@ func (a *Admin) Validate(action string) error {
 	}
 }
 
-func (a *Admin) Save(db gorm.DB) (*Admin, error) {
+func (a *Admin) Save(db *gorm.DB) (*Admin, error) {
 	var err error
 	err = db.Debug().Create(&a).Error
 	if err != nil {
@@ -103,7 +103,7 @@ func (a *Admin) Save(db gorm.DB) (*Admin, error) {
 	return a, nil
 }
 
-func (a *Admin) GetAll(db gorm.DB) (*[]Admin, error) {
+func (a *Admin) GetAll(db *gorm.DB) (*[]Admin, error) {
 	var err error
 	admins := []Admin{}
 	err = db.Debug().Model(&Admin{}).Limit(100).Find(&admins).Error
@@ -114,7 +114,7 @@ func (a *Admin) GetAll(db gorm.DB) (*[]Admin, error) {
 	return &admins, err
 }
 
-func (a *Admin) GetAdminByEmail(db gorm.DB, email string) (*Admin, error) {
+func (a *Admin) GetAdminByEmail(db *gorm.DB, email string) (*Admin, error) {
 	var err error
 	err = db.Debug().Model(&Admin{}).Where("email = ?", email).Error
 	if err != nil {
@@ -126,7 +126,7 @@ func (a *Admin) GetAdminByEmail(db gorm.DB, email string) (*Admin, error) {
 	return a, err
 }
 
-func (a *Admin) Update(db gorm.DB, uuid string) (*Admin, error) {
+func (a *Admin) Update(db *gorm.DB, uuid string) (*Admin, error) {
 	var err error
 	err = db.Debug().Model(&Admin{}).Where("uuid = ?", uuid).Take(&Admin{}).Updates(
 		map[string]interface{}{
@@ -146,7 +146,7 @@ func (a *Admin) Update(db gorm.DB, uuid string) (*Admin, error) {
 	return a, nil
 }
 
-func (a *Admin) Delete(db gorm.DB, uuid string) (int64, error) {
+func (a *Admin) Delete(db *gorm.DB, uuid string) (int64, error) {
 	var err error
 	err = db.Debug().Model(&Admin{}).Where("uuid = ?", uuid).Take(&Admin{}).Delete(&Admin{}).Error
 	if err != nil {

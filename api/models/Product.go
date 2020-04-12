@@ -49,7 +49,7 @@ func (p *Product) Validate() error {
 	return nil
 }
 
-func (p *Product) Save(db gorm.DB) (*Product, error) {
+func (p *Product) Save(db *gorm.DB) (*Product, error) {
 	var err error
 	err = db.Debug().Model(&Product{}).Create(&p).Error
 	if err != nil {
@@ -66,7 +66,7 @@ func (p *Product) Save(db gorm.DB) (*Product, error) {
 	return p, nil
 }
 
-func (p *Product) GetAll(db gorm.DB) (*[]Product, error) {
+func (p *Product) GetAll(db *gorm.DB) (*[]Product, error) {
 	var err error
 	products := []Product{}
 	err = db.Debug().Model(&Product{}).Limit(100).Find(&products).Error
@@ -86,7 +86,7 @@ func (p *Product) GetAll(db gorm.DB) (*[]Product, error) {
 	return &products, nil
 }
 
-func (p *Product) Update(db gorm.DB, slug string) (*Product, error) {
+func (p *Product) Update(db *gorm.DB, slug string) (*Product, error) {
 	var err error
 	err = db.Debug().Model(&Product{}).Where("slug = ?", slug).Take(&Product{}).Updates(
 		map[string]interface{}{
@@ -108,7 +108,7 @@ func (p *Product) Update(db gorm.DB, slug string) (*Product, error) {
 	return p, nil
 }
 
-func (p *Product) Delete(db gorm.DB, subCatId uint64, slug string) (int64, error) {
+func (p *Product) Delete(db *gorm.DB, subCatId uint64, slug string) (int64, error) {
 	var err error
 	err = db.Debug().Model(&Product{}).Where("slug = ? and sub_category_id = ?", slug, subCatId).Take(&Product{}).Delete(&Product{}).Error
 	if err != nil {
