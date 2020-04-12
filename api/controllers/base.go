@@ -3,7 +3,6 @@ package controllers
 
 import (
 	"fmt"
-	"github.com/codeinbit/go-shop/api/controllers"
 	"github.com/gorilla/mux"
 	"github.com/jinzhu/gorm"
 	"log"
@@ -11,6 +10,9 @@ import (
 
 	"github.com/codeinbit/go-shop/api/models"
 	"github.com/codeinbit/go-shop/api/routes"
+
+	_ "github.com/jinzhu/gorm/dialects/mysql"    //mysql database driver
+	_ "github.com/jinzhu/gorm/dialects/postgres" //postgres database driver
 )
 
 type Server struct {
@@ -48,10 +50,10 @@ func (s Server) Initialize(Dbdriver, DbUser, DbPassword, DbPort, DbHost, DbName 
 	s.DB.Debug().AutoMigrate(&models.Admin{}, &models.Category{}, &models.SubCategory{}, &models.Product{})
 
 	//router.LoadRouter()
-	s.Router = routes.
+	s.Router = routes.LoadRouter()
 }
 
 func (s Server) Run(addr string) {
 	fmt.Println("Listening to port 8080")
-	log.Fatal(http.ListenAndServe(addr, routes.LoadRouter))
+	log.Fatal(http.ListenAndServe(addr, s.Router))
 }
