@@ -4,7 +4,7 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/codeinbit/go-shop/api/auth"
+	myAuth "github.com/codeinbit/go-shop/api/auth"
 	"github.com/codeinbit/go-shop/api/responses"
 )
 
@@ -17,7 +17,7 @@ func SetMiddlewareJSON(next http.HandlerFunc) http.HandlerFunc {
 
 func SetMiddlewareAuthentication(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		err := auth.tokenValid(r)
+		err := myAuth.TokenValid(r)
 		if err != nil {
 			responses.ERROR(w, http.StatusUnauthorized, errors.New("Unauthorized"))
 			return
