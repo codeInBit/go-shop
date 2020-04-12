@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/badoux/checkmail"
-	"github.com/codeinbit/go-shop/api/utility"
+	"github.com/codeinbit/go-shop/api/utilities"
 	"github.com/google/uuid"
 	"github.com/jinzhu/gorm"
 )
@@ -22,7 +22,7 @@ type Admin struct {
 }
 
 func (a *Admin) BeforeSave() error {
-	hashedPassword, err := utility.Hash(a.Password)
+	hashedPassword, err := utilities.Hash(a.Password)
 	if err != nil {
 		return err
 	}
