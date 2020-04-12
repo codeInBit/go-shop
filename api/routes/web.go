@@ -6,8 +6,11 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func LoadRouter() {
-	route := mux.NewRouter()
+func LoadRouter() *mux.Router {
+	var route *mux.Router
+	route = mux.NewRouter()
 	//Home Route
-	route.HandleFunc("/", middlewares.SetMiddlewareJSON(controller)).Methods("GET")
+	route.HandleFunc("/", middlewares.SetMiddlewareJSON(controllers.Server{}.Home)).Methods("GET")
+
+	return route
 }
