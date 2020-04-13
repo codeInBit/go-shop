@@ -30,7 +30,7 @@ func (s Server) Initialize(DbDriver, DbUser, DbPassword, DbPort, DbHost, DbName 
 			fmt.Printf("Cannot connect to %s database", DbDriver)
 			log.Fatal("This is the error:", err)
 		} else {
-			fmt.Printf("We are connected to the %s database", DbDriver)
+			fmt.Printf("We are connected to the %s database\n", DbDriver)
 		}
 	}
 	if DbDriver == "postgres" {
@@ -40,7 +40,7 @@ func (s Server) Initialize(DbDriver, DbUser, DbPassword, DbPort, DbHost, DbName 
 			fmt.Printf("Cannot connect to %s database", DbDriver)
 			log.Fatal("This is the error:", err)
 		} else {
-			fmt.Printf("We are connected to the %s database", DbDriver)
+			fmt.Printf("We are connected to the %s database\n", DbDriver)
 		}
 	}
 

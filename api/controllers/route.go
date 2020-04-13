@@ -9,7 +9,7 @@ func (s Server) LoadRoutes() {
 	s.Router.HandleFunc("/", middlewares.SetMiddlewareJSON(s.Home)).Methods("GET")
 
 	//Admin routes
-	s.Router.HandleFunc("/users", middlewares.SetMiddlewareJSON(s.CreateAdmin)).Methods("POST")
-	s.Router.HandleFunc("/users", middlewares.SetMiddlewareJSON(s.GetAllAdmins)).Methods("GET")
+	s.Router.HandleFunc("/admins", middlewares.SetMiddlewareJSON(s.CreateAdmin)).Methods("POST")
+	s.Router.HandleFunc("/admins", middlewares.SetMiddlewareJSON(s.GetAllAdmins)).Methods("GET")
 
 }
