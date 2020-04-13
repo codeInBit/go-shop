@@ -43,7 +43,7 @@ func (s *Server) CreateAdmin(w http.ResponseWriter, r *http.Request)  {
 	responses.JSON(w, http.StatusCreated, adminCreated)
 }
 
-func (s Server) GetAllAdmins(w http.ResponseWriter, r http.Request) {
+func (s Server) GetAllAdmins(w http.ResponseWriter, r *http.Request) {
 	admin := models.Admin{}
 
 	admins, err := admin.GetAll(s.DB)

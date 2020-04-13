@@ -1,6 +1,5 @@
 package controllers
 
-
 import (
 	"fmt"
 	"github.com/gorilla/mux"
@@ -9,7 +8,6 @@ import (
 	"net/http"
 
 	"github.com/codeinbit/go-shop/api/models"
-	"github.com/codeinbit/go-shop/api/routes"
 
 	_ "github.com/jinzhu/gorm/dialects/mysql"    //mysql database driver
 	_ "github.com/jinzhu/gorm/dialects/postgres" //postgres database driver
@@ -22,35 +20,35 @@ type Server struct {
 
 //var router = routes.Route{}
 
-func (s Server) Initialize(Dbdriver, DbUser, DbPassword, DbPort, DbHost, DbName string)  {
+func (s Server) Initialize(DbDriver, DbUser, DbPassword, DbPort, DbHost, DbName string)  {
 	var err error
 
-	if Dbdriver == "mysql" {
+	if DbDriver == "mysql" {
 		DbURL := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local", DbUser, DbPassword, DbHost, DbPort, DbName)
-		s.DB, err = gorm.Open(Dbdriver, DbURL)
+		s.DB, err = gorm.Open(DbDriver, DbURL)
 		if err != nil {
-			fmt.Printf("Cannot connect to %s database", Dbdriver)
+			fmt.Printf("Cannot connect to %s database", DbDriver)
 			log.Fatal("This is the error:", err)
 		} else {
-			fmt.Printf("We are connected to the %s database", Dbdriver)
+			fmt.Printf("We are connected to the %s database", DbDriver)
 		}
 	}
-	if Dbdriver == "postgres" {
+	if DbDriver == "postgres" {
 		DbURL := fmt.Sprintf("host=%s port=%s user=%s dbname=%s sslmode=disable password=%s", DbHost, DbPort, DbUser, DbName, DbPassword)
-		s.DB, err = gorm.Open(Dbdriver, DbURL)
+		s.DB, err = gorm.Open(DbDriver, DbURL)
 		if err != nil {
-			fmt.Printf("Cannot connect to %s database", Dbdriver)
+			fmt.Printf("Cannot connect to %s database", DbDriver)
 			log.Fatal("This is the error:", err)
 		} else {
-			fmt.Printf("We are connected to the %s database", Dbdriver)
+			fmt.Printf("We are connected to the %s database", DbDriver)
 		}
 	}
 
 	//database migration
 	s.DB.Debug().AutoMigrate(&models.Admin{}, &models.Category{}, &models.SubCategory{}, &models.Product{})
 
-	//router.LoadRouter()
-	s.Router = routes.LoadRouter()
+	s.Router = mux.NewRouter()
+	s.LoadRoutes()
 }
 
 func (s Server) Run(addr string) {

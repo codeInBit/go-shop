@@ -2,11 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8816b3a7-d406-41f7-a947-fcfb0999ce0a" name="Default Changelist" comment="Added a middleware and also formaterror utility">
+      <change afterPath="$PROJECT_DIR$/api/controllers/Controller.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/controllers/route.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controllers/AdminController.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/AdminController.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controllers/base.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/routes/web.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/api/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/server.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +59,21 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="go-shop" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/main.go" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build main.go" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="8816b3a7-d406-41f7-a947-fcfb0999ce0a" name="Default Changelist" comment="" />
@@ -90,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586701363926</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Update server and main.go file">
+      <created>1586738330349</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1586738330349</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -100,7 +127,8 @@
     <MESSAGE value="Created basic structure and methods for Admin, Category, SubCategory and Product Model" />
     <MESSAGE value="Created Utility and Resources Packages and also functions for JWT Auth" />
     <MESSAGE value="Added a middleware and also formaterror utility" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a middleware and also formaterror utility" />
+    <MESSAGE value="Update server and main.go file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update server and main.go file" />
   </component>
   <component name="WindowStateProjectService">
     <state x="320" y="115" key="#Build_Tags_&amp;_Vendoring" timestamp="1586682830847">
@@ -115,22 +143,42 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="320" y="115" key="#Notifications/0.0.1440.900@0.0.1440.900" timestamp="1586685556992" />
-    <state x="441" y="260" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586686922276">
+    <state x="441" y="260" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586770030352">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="441" y="260" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1586686922276" />
+    <state x="441" y="260" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1586770030352" />
     <state x="533" y="173" key="#com.intellij.ide.util.MemberChooser" timestamp="1586622740505">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="533" y="173" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1586622740505" />
-    <state x="314" y="52" key="CommitChangelistDialog2" timestamp="1586701460003">
+    <state x="429" y="92" key="#go_build_main.go" timestamp="1586763599754">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="314" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1586701460003" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1586701376934">
+    <state x="429" y="92" key="#go_build_main.go/0.0.1440.900@0.0.1440.900" timestamp="1586763599754" />
+    <state x="314" y="52" key="CommitChangelistDialog2" timestamp="1586738329852">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1586701376934" />
+    <state x="314" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1586738329852" />
+    <state width="1398" height="245" key="GridCell.Tab.0.bottom" timestamp="1586769944134">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1586769944134" />
+    <state width="1398" height="245" key="GridCell.Tab.0.center" timestamp="1586769944133">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1586769944132" />
+    <state width="1398" height="245" key="GridCell.Tab.0.left" timestamp="1586769944131">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1586769944131" />
+    <state width="1398" height="245" key="GridCell.Tab.0.right" timestamp="1586769944133">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1586769944133" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1586738333727">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1586738333727" />
     <state x="450" y="369" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1586686880864">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
