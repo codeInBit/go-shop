@@ -12,5 +12,10 @@ func LoadRouter() *mux.Router {
 	//Home Route
 	route.HandleFunc("/", middlewares.SetMiddlewareJSON(controllers.Server{}.Home)).Methods("GET")
 
+	//Admin routes
+	route.HandleFunc("/users", middlewares.SetMiddlewareJSON(controllers.Server{}.CreateAdmin)).Methods("POST")
+	route.HandleFunc("/users", middlewares.SetMiddlewareJSON(controllers.Server{}.GetAllAdmins)).Methods("GET")
+
+
 	return route
 }
