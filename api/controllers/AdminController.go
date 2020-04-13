@@ -42,3 +42,15 @@ func (s *Server) Create(w http.ResponseWriter, r *http.Request)  {
 	w.Header().Set("Location", fmt.Sprintf("%s%s/%d", r.Host, r.RequestURI, adminCreated.ID))
 	responses.JSON(w, http.StatusCreated, adminCreated)
 }
+
+func (s Server) GetAll(w http.ResponseWriter, r http.Request) {
+	admin := models.Admin{}
+
+	admins, err := admin.GetAll(s.DB)
+	if err != nil {
+		responses.ERROR(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	responses.JSON(w, http.StatusOK, admins)
+}
