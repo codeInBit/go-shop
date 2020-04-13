@@ -1,5 +1,7 @@
 package api
 
-func main()  {
+import "github.com/codeinbit/go-shop/api"
+
+func main() {
 	api.Run()
 }
