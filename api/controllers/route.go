@@ -4,7 +4,7 @@ import (
 	"github.com/codeinbit/go-shop/api/middlewares"
 )
 
-func (s Server) LoadRoutes() {
+func (s *Server) LoadRoutes() {
 	//Home Route
 	s.Router.HandleFunc("/", middlewares.SetMiddlewareJSON(s.Home)).Methods("GET")
 

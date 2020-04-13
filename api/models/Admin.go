@@ -130,8 +130,8 @@ func (a *Admin) Update(db *gorm.DB, uuid string) (*Admin, error) {
 	var err error
 	err = db.Debug().Model(&Admin{}).Where("uuid = ?", uuid).Take(&Admin{}).Updates(
 		map[string]interface{}{
-			"firstname": a.FirstName,
-			"lastname":  a.LastName,
+			"first_name": a.FirstName,
+			"last_name":  a.LastName,
 			"email":     a.Email,
 			"password":  a.Password,
 		}).Error

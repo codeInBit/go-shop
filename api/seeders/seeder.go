@@ -26,15 +26,15 @@ var admins = []models.Admin{
 }
 
 func Load(db *gorm.DB) {
-	//err := db.Debug().DropTableIfExists(&models.Admin{}).Error
-	//if err != nil {
-	//	log.Fatalf("cannot drop table: %v", err)
-	//}
-	//
-	//err = db.Debug().AutoMigrate(&models.Admin{}).Error
-	//if err != nil {
-	//	log.Fatalf("cannot migrate table: %v", err)
-	//}
+	err := db.Debug().DropTableIfExists(&models.Admin{}).Error
+	if err != nil {
+		log.Fatalf("cannot drop table: %v", err)
+	}
+
+	err = db.Debug().AutoMigrate(&models.Admin{}).Error
+	if err != nil {
+		log.Fatalf("cannot migrate table: %v", err)
+	}
 
 	for i, _ := range admins {
 		err := db.Debug().Model(&models.Admin{}).Create(&admins[i]).Error

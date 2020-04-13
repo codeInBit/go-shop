@@ -20,7 +20,7 @@ type Server struct {
 
 //var router = routes.Route{}
 
-func (s Server) Initialize(DbDriver, DbUser, DbPassword, DbPort, DbHost, DbName string)  {
+func (s *Server) Initialize(DbDriver, DbUser, DbPassword, DbPort, DbHost, DbName string)  {
 	var err error
 
 	if DbDriver == "mysql" {
@@ -51,7 +51,7 @@ func (s Server) Initialize(DbDriver, DbUser, DbPassword, DbPort, DbHost, DbName 
 	s.LoadRoutes()
 }
 
-func (s Server) Run(addr string) {
+func (s *Server) Run(addr string) {
 	fmt.Println("Listening to port 8080")
 	log.Fatal(http.ListenAndServe(addr, s.Router))
 }
